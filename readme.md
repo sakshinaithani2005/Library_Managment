@@ -79,23 +79,23 @@ library-management/
 
 ### 🖼️ Add Book Page
 
-![Add Book](static/images/image1.png)
+![Add Book](static/image1.png)
 
 ### 🖼️ Add Member Page
 
-![Add Member](static/images/image2.png)
+![Add Member](static/image2.png)
 
 ### 🖼️ Issue Book Page
 
-![Issue Book](static/images/image3.png)
+![Issue Book](static/image3.png)
 
 ### 🖼️ Return Book with Fine Calculation
 
-![Return Book](static/images/image4.png)
+![Return Book](static/image4.png)
 
 ### 🖼️ Dashboard Summary
 
-![Dashboard Summary](static/images/image5.png)
+![Dashboard Summary](static/image5.png)
 
 ---
 
