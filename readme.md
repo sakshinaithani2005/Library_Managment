@@ -77,12 +77,26 @@ library-management/
 
 ## 📸 Screenshots
 
-(Add screenshots of fine calculation and return form here)
-![alt text](image1.png)
-![alt text](image2.png)
-![alt text](image3.png)
-![alt text](image4.png)
-![alt text](image5.png)
+### 🖼️ Add Book Page
+
+![Add Book](static/images/image1.png)
+
+### 🖼️ Add Member Page
+
+![Add Member](static/images/image2.png)
+
+### 🖼️ Issue Book Page
+
+![Issue Book](static/images/image3.png)
+
+### 🖼️ Return Book with Fine Calculation
+
+![Return Book](static/images/image4.png)
+
+### 🖼️ Dashboard Summary
+
+![Dashboard Summary](static/images/image5.png)
+
 ---
 
 ## 🤝 Contributing
@@ -97,3 +111,6 @@ This project is licensed under the MIT License.
 
 ---
 
+## 👩‍💻 Author
+
+Made with ❤️ by [Your Name](https://github.com/yourusername)
