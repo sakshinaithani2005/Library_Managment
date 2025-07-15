@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Library Management</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input, button { padding: 6px; margin: 5px; }
+    .section { margin-bottom: 30px; border: 1px solid #ccc; padding: 15px; border-radius: 10px; }
+    h2 { color: #2a5885; }
+  </style>
+</head>
+<body>
+
+  <h1>📚 Library Management System</h1>
+
+  <div class="section">
+    <h2>Add Book</h2>
+    <input id="isbn" placeholder="ISBN">
+    <input id="title" placeholder="Title">
+    <input id="category" placeholder="Category">
+    <input id="rental" placeholder="Rental Price">
+    <input id="fine" placeholder="Fine Price">
+    <input id="status" placeholder="Status">
+    <input id="author" placeholder="Author">
+    <input id="publisher" placeholder="Publisher">
+    <button onclick="addBook()">Add Book</button>
+  </div>
+
+  <div class="section">
+    <h2>Add Member</h2>
+    <input id="member_id" placeholder="Member ID">
+    <input id="member_name" placeholder="Name">
+    <input id="member_address" placeholder="Address">
+    <input id="reg_date" placeholder="Reg Date (YYYY-MM-DD)">
+    <button onclick="addMember()">Add Member</button>
+  </div>
+
+  <div class="section">
+    <h2>Issue Book</h2>
+    <input id="issued_id" placeholder="Issue ID">
+    <input id="issued_member_id" placeholder="Member ID">
+    <input id="issued_book_name" placeholder="Book Name">
+    <input id="issued_date" placeholder="Issue Date">
+    <input id="expected_return_date" placeholder="Expected Return">
+    <input id="issued_book_isbn" placeholder="Book ISBN">
+    <button onclick="issueBook()">Issue</button>
+  </div>
+
+  <div class="section">
+    <h2>Return Book</h2>
+    <input id="return_id" placeholder="Return ID">
+    <input id="issued_id_ref" placeholder="Issued ID">
+    <input id="return_book_isbn" placeholder="Book ISBN">
+    <input id="actual_return_date" placeholder="Return Date">
+    <button onclick="returnBook()">Return</button>
+  </div>
+
+  <div class="section">
+    <h2>Dashboard: Charges Summary</h2>
+    <button onclick="loadCharges()">🔄 Load Charges</button>
+    <div id="chargeResults"></div>
+  </div>
+
+  <script>
+    const API = 'http://127.0.0.1:5000';
+
+    function postData(url, data) {
+      fetch(`${API}${url}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(data => alert(data.message))
+      .catch(err => alert("Error: " + err));
+    }
+
+    function addBook() {
+      postData('/books', {
+        isbn: isbn.value,
+        book_title: title.value,
+        category: category.value,
+        rental_price: rental.value,
+        fine_price: fine.value,
+        status: status.value,
+        author: author.value,
+        publisher: publisher.value
+      });
+    }
+
+    function addMember() {
+      postData('/members', {
+        member_id: member_id.value,
+        member_name: member_name.value,
+        member_address: member_address.value,
+        reg_date: reg_date.value
+      });
+    }
+
+    function issueBook() {
+      postData('/issued', {
+        issued_id: issued_id.value,
+        issued_member_id: issued_member_id.value,
+        issued_book_name: issued_book_name.value,
+        issued_date: issued_date.value,
+        expected_return_date: expected_return_date.value,
+        issued_book_isbn: issued_book_isbn.value
+      });
+    }
+
+    function returnBook() {
+      postData('/returns', {
+        return_id: return_id.value,
+        issued_id: issued_id_ref.value,
+        return_book_isbn: return_book_isbn.value,
+        actual_return_date: actual_return_date.value
+      });
+    }
+
+    function loadCharges() {
+      fetch(`${API}/charges`)
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById('chargeResults');
+          container.innerHTML = '<table border="1" cellpadding="5"><tr><th>Charge ID</th><th>Return ID</th><th>ISBN</th><th>Total</th></tr>' +
+            data.map(c => `<tr><td>${c[0]}</td><td>${c[2]}</td><td>${c[3]}</td><td>${c[1]}</td></tr>`).join('') + '</table>';
+        })
+        .catch(err => alert("Failed to load charges: " + err));
+    }
+  </script>
+</body>
+</html>
