@@ -55,12 +55,13 @@ You can change the fine rate in the configuration settings.
 ```
 library-management/
 │
-├── app.py                # Main Flask app with routes
-├── config.py             # MySQL credentials
-├── templates/            # Jinja2 HTML files
-├── static/               # Static files (CSS, JS, images)
-├── requirements.txt      # Python packages
-└── README.md             # Project documentation
+├── app.py                # Main Flask app
+├── tables.sql            # SQL table creation script
+├── query.sql             # Insert and query commands
+├── templates/            # Jinja2 HTML templates
+├── static/               # Static assets (CSS/images)
+├── requirements.txt      # Python dependencies
+└── readme.md             # Project documentation
 ```
 
 ---
